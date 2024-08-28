@@ -1,3 +1,4 @@
+import sys
 import os
 import telebot
 from telebot import types
@@ -9,6 +10,7 @@ from hunters.kamernet import Kamernet
 from hunters.gruno import Gruno
 from hunters.wonen123 import Wonen123
 from history import History
+from paddle import Paddle
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -17,6 +19,11 @@ BOT_TOKEN = os.environ.get('BOT_TOKEN')
 CHAT_ID = os.environ.get('CHAT_ID')
 MAXIMUM_PRICE = os.environ.get('MAXIMUM_PRICE')
 MINIMUM_PRICE = os.environ.get('MINIMUM_PRICE')
+PADDLE_API_KEY = os.environ.get('API_KEY')
+
+paddle = Paddle(PADDLE_API_KEY)
+paddle.list_products()
+sys.exit()
 
 if BOT_TOKEN is None:
     print('BOT_TOKEN was not set! Make sure your .bashrc is well configured')
@@ -116,7 +123,7 @@ def status_message(message):
     else:
         send_message(chat_id, 'You are not subscribed to notifications, send the message /subscribe if you want them :)')
 
-runHunters = True
+run_hunters = True
 def run_hunters():
     hunters = [Wonen123(), Gruno(), Kamernet(), Pararius()]
 
@@ -124,7 +131,7 @@ def run_hunters():
     for hunter in hunters:
         hunter.start()
     history = History('history.txt')
-    while runHunters:
+    while run_hunters:
         preys = []
         # Get preys
         for hunter in hunters:
@@ -168,5 +175,5 @@ def run_hunters():
 t = threading.Thread(target=run_hunters)
 t.start()
 bot.infinity_polling()
-runHunters = False
+run_hunters = False
 t.join()
