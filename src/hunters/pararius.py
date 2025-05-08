@@ -6,9 +6,9 @@ from selenium.common.exceptions import NoSuchElementException
 import re
 
 class Pararius(Hunter):
-    def __init__(self):
+    def __init__(self, city):
         name = 'Pararius'
-        url = 'https://www.pararius.nl/huurwoningen/groningen'
+        url = 'https://www.pararius.nl/huurwoningen/' + city
         super().__init__(name, url)
 
     def process(self):

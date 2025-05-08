@@ -8,6 +8,7 @@ from hunters.pararius import Pararius
 from hunters.kamernet import Kamernet
 from hunters.gruno import Gruno
 from hunters.wonen123 import Wonen123
+from hunters.coversWonen import CoversWonen
 from history import History
 from dotenv import load_dotenv
 
@@ -118,7 +119,8 @@ def status_message(message):
 
 runHunters = True
 def run_hunters():
-    hunters = [Wonen123(), Gruno(), Kamernet(), Pararius()]
+    #hunters = [Pararius('utrecht')] # Wonen123(), Gruno(), Kamernet(),
+    hunters = [CoversWonen()]
 
     print('Start hunters')
     for hunter in hunters:
