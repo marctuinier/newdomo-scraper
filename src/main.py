@@ -87,7 +87,7 @@ def subscribe_message(message):
         update_env_file()
 
         print(f'New chat ID subscribed: {chat_id}. Current chat_ids "{CHAT_ID}"')
-        send_message(chat_id, f'You have been subscribed to receive the groningen apartment notifications!')
+        send_message(chat_id, f'You have been subscribed to receive the apartment notifications!')
     else:
         send_message(chat_id, f'You are already subscribed.')
 
@@ -104,7 +104,7 @@ def unsubscribe_message(message):
         update_env_file()
 
         print(f'Chat ID unsubscribed: {chat_id}. Current chat_ids "{CHAT_ID}"')
-        send_message(chat_id, f'You have been unsubscribed from receiving groningen apartment notifications.')
+        send_message(chat_id, f'You have been unsubscribed from receiving apartment notifications.')
     else:
         send_message(chat_id, f'You are not subscribed.')
 
@@ -119,8 +119,10 @@ def status_message(message):
 
 runHunters = True
 def run_hunters():
-    #hunters = [Pararius('utrecht')] # Wonen123(), Gruno(), Kamernet(),
-    hunters = [CoversWonen()]
+    # Groningen hunter
+    #hunters = [Pararius('groningen'), Wonen123(), Gruno(), Kamernet()]
+    # Utrecht hunter
+    hunters = [Pararius('utrecht'), CoversWonen()]
 
     print('Start hunters')
     for hunter in hunters:
