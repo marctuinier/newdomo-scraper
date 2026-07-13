@@ -1,0 +1,11 @@
+services:
+  scraper:
+    build: .
+    image: newdomo-scraper
+    container_name: newdomo-scraper
+    env_file: .env
+    # The scraper runs one full cycle and exits. Restart it on a schedule
+    # with cron (see docs/SELF_HOSTING.md), e.g.:
+    #   0 */6 * * * docker start newdomo-scraper
+    restart: "no"
+    shm_size: 1gb

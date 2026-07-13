@@ -1,5 +1,9 @@
 .env
 *.log
 *.pem
-history.txt
 __pycache__/
+*.pyc
+.venv/
+venv/
+debug_files/
+.DS_Store
